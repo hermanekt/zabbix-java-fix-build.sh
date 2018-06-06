@@ -18,5 +18,3 @@ rm -rf ~/rpmbuild/SOURCES/zabbix-3.4.*.gz
 cd ~/rpmbuild/SOURCES/ && tar -czf zabbix-$VERSION.tar.gz zabbix-$VERSION
 cd ~/ && rpmbuild -ba ~/rpmbuild/SPECS/zabbix.spec
 rpm -qip ~/rpmbuild/RPMS/x86_64/zabbix-java-gateway-$VERSION-$REVISION.el7.x86_64.rpm
-
-scp rpmbuild/RPMS/x86_64/zabbix-java-gateway-$VERSION-$REVISION.el7.x86_64.rpm root@tomashermanek.cz:/var/www/coreit.cz/web/download/
