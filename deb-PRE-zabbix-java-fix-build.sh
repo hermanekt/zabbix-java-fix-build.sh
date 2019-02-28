@@ -4,8 +4,8 @@ set -e
 
 dpkg --remove zabbix-release
 rm -rf zabbix*
-wget https://repo.zabbix.com/zabbix/4.0/debian/pool/main/z/zabbix-release/zabbix-release_4.0-2+stretch_all.deb
-dpkg -i zabbix-release_4.0-2+stretch_all.deb
+wget https://repo.zabbix.com/zabbix/4.1/debian/pool/main/z/zabbix-release/zabbix-release_4.1-1+stretch_all.deb
+dpkg -i zabbix-release_4.1-1+stretch_all.deb
 
 apt-get update
 apt-get source zabbix
@@ -13,7 +13,7 @@ apt-get source zabbix
 sed -i "s/String key = property.getKey().toUpperCase();/String key = property.getKey().toUpperCase().replace('-', '_');/g" zabbix-*/src/zabbix_java/src/com/zabbix/gateway/JMXItemChecker.java
 
 apt-get -y build-dep zabbix
-cd zabbix-4.0*
+cd zabbix-4.2*
 debuild  -b -us -uc
 
 cd ~/Zabbix_wildfly_eap_jboss_monitoring && git pull
