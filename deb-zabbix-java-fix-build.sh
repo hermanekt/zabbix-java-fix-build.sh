@@ -2,6 +2,7 @@
 set -e
 # apt-get install dpkg-dev devscripts build-essential lintian
 
+cd ~/zabbix-java-fix-build.sh
 dpkg --remove zabbix-release
 rm -rf zabbix*
 wget https://repo.zabbix.com/zabbix/4.0/debian/pool/main/z/zabbix-release/zabbix-release_4.0-2+stretch_all.deb
