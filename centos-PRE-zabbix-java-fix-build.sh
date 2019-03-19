@@ -3,7 +3,7 @@
 # yum install -y https://repo.zabbix.com/zabbix/4.0/rhel/7/x86_64/zabbix-release-4.0-1.el7.noarch.rpm
 # yum install -y wget rpm-build make gcc mysql-devel postgresql-devel net-snmp-devel openldap-devel gnutls-devel sqlite-devel unixODBC-devel curl-devel OpenIPMI-devel libssh2-devel java-devel libxml2-devel pcre-devel libevent-devel openssl-devel iksemel-devel
 
-# Example usage ./centos-zabbix-java-fix-build.sh "4.2" "beta" "4" "2"
+# Example usage ./centos-PRE-zabbix-java-fix-build.sh "4.2" "rc" "5" "1"
 
 set -e
 
@@ -14,11 +14,12 @@ VERSION_REPO=4.1
 
 rm -rf *.src.rpm
 rm -rf ~/rpmbuild/*
-
+#https://repo.zabbix.com/zabbix/4.1/rhel/7/SRPMS/zabbix-4.2.0-0.5rc.el7.src.rpm
+#https://repo.zabbix.com/zabbix/4.1/rhel/7/SRPMS/zabbix-4.2.0-0.5rc1.el7.src.rpm
 wget https://repo.zabbix.com/zabbix/$VERSION_REPO/rhel/7/SRPMS/zabbix-$VERSION.$RELEASE.$3$REVISION.el7.src.rpm
 rpm -ivh zabbix-$VERSION.$RELEASE.$3$REVISION.el7.src.rpm
 
-rpm -ivh zabbix-4.2.0-0.4beta2.el7.src.rpm
+rpm -ivh zabbix-4.2.0-0.$3$REVISION.el7.src.rpm
 
 cd ~/rpmbuild/SOURCES
 
@@ -43,5 +44,5 @@ git add .
 git commit -m "PRERELASED VERSION! Centos 7, RH7 version:$VERSION.-$REVISION"
 git push
 
-#rm -rf ~/rpmbuild/*
+rm -rf ~/rpmbuild/*
 
